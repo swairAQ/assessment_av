@@ -1,6 +1,6 @@
 import React, { Component, useState, useRef, useEffect } from 'react';
 import {
-    View, FlatList, Animated, Easing, Text, TouchableOpacity, Image
+    View, FlatList, Animated, Easing, ActivityIndicator, TouchableOpacity, Image
 } from 'react-native';
 import Styles from './Styles'
 import { Modal, RegularText } from '../../components'
@@ -25,6 +25,7 @@ export default function Employee(props) {
     const [modalVisible, setModalVisible] = useState(false)
     const [isEdit, setIsEdit] = useState(false)
     const [isFilterPressed, setIsFilterPressed] = useState(false)
+    const [processingOverlay, setProcessingOverlay] = useState(false)
 
 
     useEffect(() => {
@@ -54,12 +55,19 @@ export default function Employee(props) {
         setModalVisible(true)
     }
     function onPressDelete() {
+        setProcessingOverlay(true)
+        console.log('true')
         const result = EmployeeService.deleteEmployee(swipeData.id)
         setEmployeeData(result)
+        setTimeout(() => {
+
+            setProcessingOverlay(false)
+        }, 100);
     }
     function onSubmit(name, age) {
 
         setModalVisible(false)
+        setProcessingOverlay(true)
         var results;
         if (isEdit) {
             results = EmployeeService.updateEmployee({ id: swipeData.id, name: name, age: age })
@@ -68,6 +76,9 @@ export default function Employee(props) {
             results = EmployeeService.addEmployee({ name: name, age: age })
         }
         setEmployeeData(results)
+
+
+        setProcessingOverlay(false)
 
     }
     function onFilterPress() {
@@ -103,9 +114,13 @@ export default function Employee(props) {
         )
     }
 
+
     return (
         <View style={container}>
 
+            {processingOverlay &&
+                renderLoadingView()
+            }
             <View style={header}>
                 <AnimatedText text={getTime()} />
                 {renderButtons()}
@@ -117,6 +132,7 @@ export default function Employee(props) {
             </TouchableOpacity>
 
             <FlatList
+                extraData={processingOverlay}
                 style={{ marginTop: '-20%' }}
                 data={employeeData}
                 keyExtractor={({ item, index }) => item + index}
@@ -133,6 +149,20 @@ export default function Employee(props) {
             }
         </View>
     )
+    function renderLoadingView() {
+        return (<View
+            style={{
+                justifyContent: 'center',
+                alignItems: 'center',
+                alignContent: 'center',
+                height: '100%',
+                width: '100%',
+                position: 'absolute',
+                backgroundColor: 'rgba(0,0,0,0.3)'
+            }}>
+            <ActivityIndicator size="large" color={Colors.BLUE} animating={true} />
+        </View>)
+    }
 
     function renderItem({ item, index }) {
         return (
