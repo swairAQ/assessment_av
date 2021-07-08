@@ -8,7 +8,7 @@
 
 import React from 'react';
 import ReduxApp from './src';
-
+console.disableYellowBox = true
 export default function App() {
 
   return <ReduxApp />;

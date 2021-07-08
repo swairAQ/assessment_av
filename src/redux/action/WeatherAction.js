@@ -10,10 +10,8 @@ export const WeatherAPI = () =>
         try {
             var endPoint = WEATHER_URL;
 
-            const bResponse = await axios.post(endPoint);
+            const bResponse = await axios.get(endPoint);
 
-
-            console.log('B Response GetSubmittedFeedback_Api action' + JSON.stringify(bResponse))
             if (bResponse.status == 200) {
                 dispatch(ApiSuccess(bResponse.data));
                 return true;

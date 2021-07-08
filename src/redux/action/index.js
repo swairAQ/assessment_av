@@ -1,3 +1,3 @@
-import WeatherAction from './WeatherAction'
+import { WeatherAPI } from './WeatherAction'
 
-export default actions = { WeatherAction }
+export { WeatherAPI }
