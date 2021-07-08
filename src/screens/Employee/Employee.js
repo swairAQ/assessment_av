@@ -13,7 +13,7 @@ export default function Employee(props) {
     //MARK:- Variables
     const swipeableRef = useRef(null);
     const { Morning, Evening, Afternoon, Edit, Delete } = Strings
-    const { container, header, vwSwipe, swipeIcon, vwMainSwipe, icActionBtn, vwButtons, actionBtn } = Styles
+    const { container, vwBackBtn, icBackBtn, header, vwSwipe, swipeIcon, vwMainSwipe, icActionBtn, vwButtons, actionBtn } = Styles
     const { navigation } = props
     const rightButtons = [
         <TouchableOpacity onPress={onPressEdit} style={vwSwipe}><Image resizeMode='contain' source={require('../../assets/images/edit.png')} style={swipeIcon} /></TouchableOpacity>,
@@ -24,6 +24,8 @@ export default function Employee(props) {
     const [employeeData, setEmployeeData] = useState({})
     const [modalVisible, setModalVisible] = useState(false)
     const [isEdit, setIsEdit] = useState(false)
+    const [isFilterPressed, setIsFilterPressed] = useState(false)
+
 
     useEffect(() => {
         const data = EmployeeService.getEmployees()
@@ -68,6 +70,16 @@ export default function Employee(props) {
         setEmployeeData(results)
 
     }
+    function onFilterPress() {
+        if (isFilterPressed) {
+            setEmployeeData(EmployeeService.getEmployees())
+        }
+        else {
+            const results = employeeData.filter(data => data.age >= 25);
+            setEmployeeData(results)
+        }
+        setIsFilterPressed(!isFilterPressed)
+    }
     function renderButtons() {
         return (
             <View style={vwButtons}>
@@ -79,7 +91,9 @@ export default function Employee(props) {
                         style={icActionBtn}
                         source={require('../../assets/images/plus.png')} />
                 </TouchableOpacity>
-                <TouchableOpacity style={actionBtn}>
+                <TouchableOpacity
+                    onPress={onFilterPress}
+                    style={[actionBtn, isFilterPressed && { backgroundColor: Colors.LIGHT_GRAY }]}>
                     <Image
                         resizeMode='contain'
                         style={icActionBtn}
@@ -91,10 +105,16 @@ export default function Employee(props) {
 
     return (
         <View style={container}>
+
             <View style={header}>
                 <AnimatedText text={getTime()} />
                 {renderButtons()}
             </View>
+            <TouchableOpacity
+                onPress={() => navigation.goBack()}
+                style={vwBackBtn}>
+                <Image resizeMode='contain' style={icBackBtn} source={require("../../assets/images/back.png")} />
+            </TouchableOpacity>
 
             <FlatList
                 style={{ marginTop: '-20%' }}
@@ -164,7 +184,7 @@ class AnimatedText extends Component {
 
         const txt = this.txtAnimationVal.interpolate({
             inputRange: [0, 1],
-            outputRange: [-110, 20]
+            outputRange: [150, 20]
         })
         return (
             <Animated.View

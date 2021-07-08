@@ -4,6 +4,8 @@ import { Colors } from '../../utilities';
 const { BLUE, LIGHT_GRAY, WHITE } = Colors
 
 export default StyleSheet.create({
+    vwBackBtn: { position: 'absolute', top: '6%', left: '5%', height: 50, width: 50 },
+    icBackBtn: { height: 35, width: 35, tintColor: WHITE },
     icActionBtn: { height: 25, width: 25, tintColor: BLUE },
     actionBtn: { height: 40, width: 40, borderRadius: 40, backgroundColor: WHITE, justifyContent: 'center', alignItems: 'center', marginLeft: '2%' },
     vwButtons: { flexDirection: 'row', marginTop: '5%', marginHorizontal: '2%', justifyContent: 'flex-end', },
