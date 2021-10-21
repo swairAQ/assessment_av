@@ -13,6 +13,8 @@ export default StyleSheet.create({
         borderRadius: 6, height: 100,
         marginLeft: '4%',
         marginVertical: '1%',
+        // paddingBottom: 20,
+        padding: '3%',
     },
     swipeIcon: { height: 30, width: 30, marginHorizontal: "5%" },
     txtSwipteBtn: { height: 40, },
@@ -27,7 +29,7 @@ export default StyleSheet.create({
         alignContent: 'center'
     },
     container: { flex: 1, backgroundColor: LIGHT_GRAY },
-    textView: { fontSize: 30, },
+
     header: {
         backgroundColor: BLUE,
         height: '40%',

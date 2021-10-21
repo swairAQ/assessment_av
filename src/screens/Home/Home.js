@@ -17,7 +17,7 @@ export default function Home(props) {
                     source={require('../../assets/images/bg.jpeg')}
                     imageStyle={{ borderBottomRightRadius: 90 }}
                     style={imgBG}>
-                    <RegularText text={Home_welcome} styles={{ marginBottom: '4%' }} />
+                    <RegularText text={Home_welcome} styles={{ marginBottom: '4%', padding: '3%' }} />
                 </ImageBackground>
             </View>
             <Button

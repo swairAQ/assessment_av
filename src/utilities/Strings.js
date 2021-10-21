@@ -11,6 +11,10 @@ export default Strings = {
     Age: 'Age',
     AddEmployee: 'Add Employee',
     UpdateEmployee: 'Update Employee',
-    tempPostfix: '°C'
+    tempPostfix: '°C',
+    Login: 'Login',
+    Username: 'Username',
+    Password: 'Password',
+
 
 }

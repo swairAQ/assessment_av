@@ -1,7 +1,8 @@
 const ScreenNames = {
     HOME: 'Home',
     WEATHER: 'Weather',
-    EMPLOYEE: 'Employee'
+    EMPLOYEE: 'Employee',
+    LOGIN: 'Login'
 }
 
 export default ScreenNames

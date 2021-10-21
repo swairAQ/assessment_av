@@ -10,8 +10,8 @@ export default StyleSheet.create({
     icBackBtn: { height: 35, width: 35, tintColor: WHITE },
 
     container: { flex: 1, backgroundColor: LIGHT_GRAY },
-    textView: { fontSize: 30, },
-    tempTextView: { fontSize: 70, fontWeight: '300' },
+    textView: { fontSize: 25, },
+    tempTextView: { fontSize: 60, fontWeight: '300' },
     header: {
         marginTop: '30%',
 

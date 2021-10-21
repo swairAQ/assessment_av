@@ -70,7 +70,7 @@ export default function Weather(props) {
                 style={{ width: 30, height: 30 }}
                 source={{ uri: "https://www.metaweather.com/static/img/weather/png/" + item.weather_state_abbr + ".png" }} />
 
-            <RegularText styles={{ color: Colors.DARK_GREY, marginTop: 4, }} text={(item.the_temp).toFixed(0) + tempPostfix} />
+            <RegularText styles={{ color: Colors.DARK_GREY, marginTop: 4, fontSize: 18 }} text={(item.the_temp).toFixed(0) + tempPostfix} />
 
         </View>)
 
@@ -87,7 +87,7 @@ export default function Weather(props) {
                         <View style={baseView}>
                             <View style={header}>
                                 <RegularText styles={textView} text={state.data.title} />
-                                <RegularText text={new Date(state.data.time).toLocaleDateString("en-US", options)} />
+                                <RegularText styles={{ fontSize: 16 }} text={new Date(state.data.time).toLocaleDateString("en-US", options)} />
                                 <RegularText styles={tempTextView} text={(weatherData[0].the_temp).toFixed(0) + tempPostfix} />
                                 <Image
                                     style={{ width: 30, height: 30 }}

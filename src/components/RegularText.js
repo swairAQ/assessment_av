@@ -21,8 +21,8 @@ function RegularTextView(props) {
 
 const styles = StyleSheet.create({
     textView: {
-        padding: '3%',
-
+        // backgroundColor: 'red',
+        // padding: '3%',
         fontSize: 22, color: Colors.WHITE, fontWeight: '400'
     },
 

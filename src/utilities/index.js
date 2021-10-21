@@ -7,6 +7,7 @@ import Endpoints from './Endpoints';
 import Strings from './Strings';
 import Service from './Service';
 import Employee from './Employee.json';
+import LocalStorage from './LocalStorage'
 
 
-export { ScreenUtils, Strings, Colors, Constants, Endpoints, Employee, Service };
+export { ScreenUtils, Strings, Colors, Constants, Endpoints, Employee, Service, LocalStorage };

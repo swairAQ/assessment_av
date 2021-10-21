@@ -9,7 +9,9 @@ import Navigator from './navigation'
 const Provider = require('react-redux').Provider;
 import { store } from './redux/store/MainStore';
 
-function ReduxApp(props) {
+
+
+function ReduxApp() {
     // return <View></View>
     return (
         <Provider store={store}>
